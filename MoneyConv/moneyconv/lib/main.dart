@@ -8,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,17 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Total em Dolar"),
-            Text(
-              (
-                (double.tryParse(controller_1.text)??0) / dolar
-              ).toString()),
-
-            Text("Total em Euro"),
-            Text(
-              (
-                (double.tryParse(controller_1.text)??0) / euro
-              ).toString()),
 
             TextField(
               controller: controller_1,
@@ -75,7 +63,19 @@ class _MyHomePageState extends State<MyHomePage> {
               onChanged: (String value) {
                 setState((){});
               },
-            ),            
+            ),  
+
+            Text("\nTotal em Dolar"),
+            Text(
+              (
+                (double.tryParse(controller_1.text)??0) / dolar
+              ).toString()),
+
+            Text("\nTotal em Euro"),
+            Text(
+              (
+                (double.tryParse(controller_1.text)??0) / euro
+              ).toString()),          
 
           ],
         )
