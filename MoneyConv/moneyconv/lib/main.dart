@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
+
   final String title;
 
   @override
@@ -31,42 +32,56 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  TextEditingController controller_1 = TextEditingController();
+  TextEditingController controller_2 = TextEditingController();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  double dolar = 5.60;
+  double euro = 5.05;
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        
-        title: Text(widget.title),
+        title: Text('MoneyConv'),
+        backgroundColor: Colors.blueGrey,
+        centerTitle: true,
       ),
       body: Center(
-        
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Text("Total em Dolar"),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+              (
+                (double.tryParse(controller_1.text)??0) / dolar
+              ).toString()),
+
+            Text("Total em Euro"),
+            Text(
+              (
+                (double.tryParse(controller_1.text)??0) / euro
+              ).toString()),
+
+            TextField(
+              controller: controller_1,
+              decoration: InputDecoration(
+                hintText: "Valor em Reais"
+              ),
+              onChanged: (String value) {
+                setState((){});
+              },
+            ),            
+
           ],
-        ),
+        )
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
